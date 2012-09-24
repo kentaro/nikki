@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-use utf8;
 print "Content-type: text/html\n\n";
+
 print << "END_OF_HTML";
 <html>
 <body>
@@ -18,36 +18,23 @@ print << "END_OF_HTML";
 <!--/メディアクエリでPC用・スマホ用CSSを振り分け-->
 
 <link href="style.css" type="text/css" rel="stylesheet" />
-
+<title>管理画面 - nikki</title>
 </head>
 <html>
 <body>
 <div id="contents">
-
 <div id ="wrapper">
-<img src="images/admin.gif" /><br>
-<img src="images/line.gif" /><br>
-
-<div id="information">
-
-登録情報<br>
-ログイン名：<br>
-URL：<br>
+<a href="admin.cgi"><img src="images/admin.gif" /></a><br>
+<img src="images/line.gif" /><br><br>
 </div>
-日記投稿<br>
+<img src="images/write.gif" />
+<form action="entry_post.cgi" method="post">
+<input type="hidden" name="login_id" value="$login_id">
 <br>
-<form action="post2.cgi" method="post">
-<input type="hidden" name="login_id" value="1">
-題名<br>
-<input type="text" name="entry_title" value="$entry_title" size="20"></td>
-記事<br>
 <textarea name="entry_text" value="$entry_text" id="entry_text_form" /></textarea>
-<br>
-<input type="submit" value="投稿">
-END_OF_HTML
-
-
-print << "END_OF_HTML";
+<br><br>
+<input type="submit" value="投稿" class="form_button"><br><br>
+<img src="images/line.gif" /><br>
 </form>
 </div>
 
