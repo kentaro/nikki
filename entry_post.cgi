@@ -7,20 +7,24 @@ use DBI;
 # データベース接続
 my $conn = Common::ConnectDB();
 
+# パラメータ取得
+my %data = Common::GetPara();
+my $login_id   = $data{"login_id"};
+my $entry_text = $data{"entry_text"};
+
 # 日記書き込み
-$sql = "
+my $sql = "
 insert into entry (
-entry_title,
-entry_text,
+login_id,
+entry_text
 ) values (
-" . Common::EscapeSQL($login_title) . ",
-" . Common::EscapeSQL($text) . ",
+" . Common::EscapeSQL($login_id) . ",
+" . Common::EscapeSQL($entry_text) . "
 )";
-}
 
 # データベース書き込み
-$select = $conn->prepare($sql);
-$rec = $select->execute;
+my $select = $conn->prepare($sql);
+my $rec = $select->execute;
 if(!$rec)
 {
 Common::DspMsg("データベースエラー : " . $sql);

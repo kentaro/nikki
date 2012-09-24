@@ -10,7 +10,7 @@ create table if not exists login_user (
 
 create table if not exists entry (
     entry_id int unsigned auto_increment,
-    entry_title varchar(255) not null,
+    login_id int unsigned not null,
     entry_text varchar(255) not null,
 
     primary key (entry_id)

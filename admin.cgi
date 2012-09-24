@@ -1,4 +1,10 @@
 #!/usr/bin/perl
+
+require 'common.pl';
+
+my %cookie = Common::GetCookie();
+my $login_id = $cookie{login_id};
+
 print "Content-type: text/html\n\n";
 
 print << "END_OF_HTML";

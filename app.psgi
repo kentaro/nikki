@@ -9,7 +9,7 @@ builder {
         root => ".";
 
     # entry_post.cgiは使ってないぽい
-    for my $file (grep { $_ !~ /(?:entry_post\.cgi)/ } (glob "*.cgi")) {
+    for my $file (glob "*.cgi") {
         mount "/$file" => Plack::App::WrapCGI->new(script => $file)->to_app;
     }
 
