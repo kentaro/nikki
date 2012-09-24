@@ -12,15 +12,16 @@ use DBI;
 
 sub ConnectDB
 {
-my $dbn = "******";
+my $dbn  = "******";
 my $user = "******";
-my $pswd = "*******";
+my $pswd = "******";
+my $host = "mysql577.phy.lolipop.jp";
 
 # sub ConnectDBっていうのは決まっているもの？
 # パスワードが平文？だけど、いいのかな。
 
 # データベース接続
-my $conn = DBI->connect('DBI:mysql:' . $dbn . ':mysql577.phy.lolipop.jp', $user, $pswd);
+my $conn = DBI->connect('DBI:mysql:' . $dbn . ':' . $host, $user, $pswd);
 if(!$conn)
 {
 DspMsg("データベースの接続に失敗しました");
