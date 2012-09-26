@@ -67,8 +67,9 @@ END_OF_HTML
 
 my (@user);
 while (@user = $select->fetchrow) {
-print $user[0];
+print $user[0] . "<br>";
 print $user[1];
+where  login_id = '1';
 }
 
 print << "END_OF_HTML";

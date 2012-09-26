@@ -1,4 +1,21 @@
 #!/usr/bin/perl
+
+# 2012/09/26
+# ↓これ書くと500エラーになる
+# use strict;
+# use warnings;
+
+# 2012/09/26
+# あんちぽ先生に書いていただいた
+# login_idが定義されている？
+# - 「 Common::GetCookie();」したものを「%cookie」の中に入れている？
+# %と$の違いを明確にしておく
+# ---------------------------------------
+
+require 'common.pl';
+my %cookie = Common::GetCookie();
+my $login_id = $cookie{login_id};
+
 print "Content-type: text/html\n\n";
 
 print << "END_OF_HTML";
