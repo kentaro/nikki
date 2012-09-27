@@ -6,6 +6,9 @@ require './common.pl';
 use strict;
 use DBI;
 
+my %cookie = Common::GetCookie();
+my $login_id = $cookie{login_id};
+
 # データベース接続
 my $conn = Common::ConnectDB();
 
@@ -16,7 +19,9 @@ entry_time,
 login_id
 from
 entry
-";
+where login_id=
+" . Common::EscapeSQL($login_id) .
+" order by entry_time desc";
 
 # データベース読み込み
 my $select = $conn->prepare($sql);
@@ -62,11 +67,6 @@ END_OF_HTML
 my (@user);
 while (@user = $select->fetchrow) {
 print $user[0] . "<br><br>" . $user[1] . "<br>" ;
-# where login_id="$user[2]";
-
-# おそらく「where」の部分でログインしているidをひっぱってくるので全部表示できるのでは…？
-# でも今はひとつしか出ていない状態になっている
-
 }
 print << "END_OF_HTML";
 <img src="images/line.gif" /><br><br>

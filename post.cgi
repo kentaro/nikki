@@ -96,7 +96,7 @@ email
 )";
 }
 
-# データベース書き込み
+# データベース書き込み  
 $select = $conn->prepare($sql);
 $rec = $select->execute;
 if(!$rec)

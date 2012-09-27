@@ -33,8 +33,6 @@ print << "END_OF_HTML";
 <img src="images/line.gif" /><br><br>
 
 <form action="post.cgi" method="post">
-<input type="hidden" name="login_id" value="$data{"uid"}">
-
 ユーザ名<br>
 <input type="text" name="login_name" value="$login_name"><br>
 
