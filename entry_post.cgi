@@ -8,7 +8,7 @@ use DBI;
 
 # パラメータ取得
 my %data = Common::GetPara();
-my $entry_title  = $data{"entry_title"};
+my $entry_title  = $data{"entry_title"} || '';
 my $entry_text  = $data{"entry_text"};
 my $login_id = $data{"login_id"};
 
@@ -27,7 +27,12 @@ VALUES
 ....
 
 my $select = $conn->prepare($sql);
-$select->execute($entry_title, $entry_text, $login_id);
+my $rec = $select->execute($entry_title, $entry_text, $login_id);
+
+if (!$rec) {
+    Common::DspMsg("データベースエラー : " . $sql);
+    exit;
+}
 
 # データベースクローズ
 Common::CloseDB($conn);

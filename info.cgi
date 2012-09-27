@@ -62,7 +62,7 @@ END_OF_HTML
 my (@user);
 while (@user = $select->fetchrow) {
 print $user[0] . "<br><br>" . $user[1] . "<br>" ;
-where login_id="$user[2]";
+# where login_id="$user[2]";
 
 # おそらく「where」の部分でログインしているidをひっぱってくるので全部表示できるのでは…？
 # でも今はひとつしか出ていない状態になっている

@@ -11,7 +11,9 @@ create table if not exists login_user (
 create table if not exists entry (
     entry_id int unsigned auto_increment,
     login_id int unsigned not null,
+    entry_title varchar(255) not null,
     entry_text varchar(255) not null,
+    entry_time datetime not null,
 
     primary key (entry_id)
 );
