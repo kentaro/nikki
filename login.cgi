@@ -32,7 +32,7 @@ $login_name =~ s/ /%20/g;
 $password =~ s/ /%20/g;
 
 # クッキーセット処理
-my $strCookie = "login_name=" . $login_name . " password=" . $password " login_id=" . $login_id;
+my $strCookie = "login_name=" . $login_name . " password=" . $password . " login_id=" . $login_id;
 Common::SetCookie($strCookie, 3*60*60);
 
 print "Content-type: text/html\n\n";
