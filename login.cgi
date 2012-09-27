@@ -1,9 +1,17 @@
 #!/usr/bin/perl
 
+#ログインの時につかう処理です
+#2012/09/26 おそらく動いていません
+
+# 呼び出している
+
 require './common.pl';
 use strict;
 use warnings;
 use DBI;
+
+# ログイン画面で入力したものをもらっている
+# ログイン認証処理あたりが多分間違っている気がします
 
 # パラメータ取得
 my %data = Common::GetPara();

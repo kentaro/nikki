@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# 日記の表示画面です
+
 require './common.pl';
 use strict;
 use DBI;
@@ -9,9 +11,9 @@ my $conn = Common::ConnectDB();
 
 my $sql = "
 select
-entry_title,
 entry_text,
-entry_time
+entry_time,
+login_id
 from
 entry
 ";
@@ -59,12 +61,15 @@ print << "END_OF_HTML";
 END_OF_HTML
 my (@user);
 while (@user = $select->fetchrow) {
-print $user[0] . "<br><br>" . $user[1] . "<br>";
-print $user[2];
+print $user[0] . "<br><br>" . $user[1] . "<br>" ;
+where login_id="$user[2]";
+
+# おそらく「where」の部分でログインしているidをひっぱってくるので全部表示できるのでは…？
+# でも今はひとつしか出ていない状態になっている
+
 }
-
 print << "END_OF_HTML";
-
+<img src="images/line.gif" /><br><br>
 </div>
 </div>
 </div>
