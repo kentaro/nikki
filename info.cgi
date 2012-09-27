@@ -6,6 +6,7 @@ require './common.pl';
 use strict;
 use DBI;
 
+#チェックをする
 my %cookie = Common::GetCookie();
 my $login_id = $cookie{login_id};
 
@@ -19,9 +20,11 @@ entry_time,
 login_id
 from
 entry
-where login_id=
+where login_id =
 " . Common::EscapeSQL($login_id) .
 " order by entry_time desc";
+
+# あんちぽ先生に最新の書き込みが上になるように教えてもらった2012/09/27
 
 # データベース読み込み
 my $select = $conn->prepare($sql);
